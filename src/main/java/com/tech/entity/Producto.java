@@ -36,7 +36,7 @@ public class Producto {
 	
 	@ManyToOne
 	@JoinColumn(name="idProveedor")
-	private Categoria proveedor;
+	private Proveedor proveedor;
 	
 	@Column(name = "fotoProducto1")
 	private String fotoProducto1;
@@ -95,11 +95,13 @@ public class Producto {
 		this.categoria = categoria;
 	}
 
-	public Categoria getProveedor() {
+	
+
+	public Proveedor getProveedor() {
 		return proveedor;
 	}
 
-	public void setProveedor(Categoria proveedor) {
+	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
 
