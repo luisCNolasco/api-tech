@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tech.entity.Categoria;
 import com.tech.entity.Proveedor;
 import com.tech.repository.ProveedorRespository;
 import com.tech.service.ProveedorService;
@@ -18,6 +19,11 @@ public class ProveedorServiceImpl implements ProveedorService{
 	@Override
 	public List<Proveedor> listarProveedor() {
 		return repository.findAll();
+	}
+
+	@Override
+	public Proveedor obtenerProveedor(int id) {
+		return repository.findById(id).get();
 	}
 
 }

@@ -1,9 +1,12 @@
 package com.tech.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,34 +21,52 @@ import com.tech.service.ProductoService;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})
-@RequestMapping("producto")
+@RequestMapping("/producto")
 public class ProductoController {
 
 	@Autowired
-	ProductoService service;
+	private ProductoService service;
 	
-	@GetMapping("listar")
+	@GetMapping
 	public List<Producto> listarProductos(){
 		return service.listarProductos();
 	}
 	
-	@PostMapping("registrar")
+	@PostMapping
 	public Producto registrarProducto(@RequestBody Producto producto) {
 		return service.registraActualizaProducto(producto);
 	}
 	
-	@PutMapping("/actualizar")
-	public Producto actualizarProducto(@RequestBody Producto producto) {
-		return service.registraActualizaProducto(producto);
+	@PutMapping
+	public ResponseEntity<Producto> actualizarProducto(@RequestBody Producto producto) {
+		Optional<Producto> optProducto = service.obtenerProducto(producto.getIdProducto());
+		if (optProducto.isPresent()) {
+			return ResponseEntity.ok(service.registraActualizaProducto(producto));
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
-	@GetMapping("/obtenerProducto/{idProducto}")
-	public Producto obtenerProducto(@PathVariable("idProducto") int id) {
-		return service.obtenerProducto(id);
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Producto> elimina(@PathVariable("id") int idProducto) {
+		Optional<Producto> optProducto = service.obtenerProducto(idProducto);
+		if(optProducto.isPresent()) {
+			service.eliminarProductos(idProducto);
+			return ResponseEntity.ok(optProducto.get());
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@GetMapping("/obtenerProductoPorId/{idProducto}")
+	public Producto obtenerProductoPorId(@PathVariable("idProducto") int id) {
+		return service.obtenerProductoPorId(id);
 	}
 	
 	@GetMapping("/obtenerProducto/categoria/{idCategoria}")
 	public List<Producto> listarProductosXCategoria(@PathVariable() int idCategoria) {
 		return service.listarProductos(idCategoria);
 	}
+	
+	
 }
