@@ -29,12 +29,12 @@ public class UsuarioController {
 		return service.iniciarSesion(correo, password);
 	}*/
 	
-	@GetMapping("listar")
+	@GetMapping("/listar")
 	public List<Usuario> listarUsuarios() {
 		return service.listarUsuarios();
 	}
 	
-	@PostMapping("registrar")
+	@PostMapping("/registrar")
 	public Usuario registrarUsuario(Usuario usuario) {
 		return service.registrarUsuario(usuario);
 	}

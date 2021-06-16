@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tech.entity.Categoria;
 import com.tech.entity.Proveedor;
 import com.tech.repository.ProveedorRespository;
 import com.tech.service.ProveedorService;

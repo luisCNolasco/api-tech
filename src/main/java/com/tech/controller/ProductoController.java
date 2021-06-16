@@ -1,10 +1,8 @@
 package com.tech.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,38 +25,28 @@ public class ProductoController {
 	@Autowired
 	private ProductoService service;
 	
-	@GetMapping
+	@GetMapping("/listar")
 	public List<Producto> listarProductos(){
 		return service.listarProductos();
 	}
 	
-	@PostMapping
+	@PostMapping("/registrar")
 	public Producto registrarProducto(@RequestBody Producto producto) {
 		return service.registraActualizaProducto(producto);
 	}
 	
-	@PutMapping
-	public ResponseEntity<Producto> actualizarProducto(@RequestBody Producto producto) {
-		Optional<Producto> optProducto = service.obtenerProducto(producto.getIdProducto());
-		if (optProducto.isPresent()) {
-			return ResponseEntity.ok(service.registraActualizaProducto(producto));
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	@PutMapping("/actualizar")
+	public Producto actualizaProducto(@RequestBody Producto producto) {
+		return service.registraActualizaProducto(producto);
 	}
 	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Producto> elimina(@PathVariable("id") int idProducto) {
-		Optional<Producto> optProducto = service.obtenerProducto(idProducto);
-		if(optProducto.isPresent()) {
-			service.eliminarProductos(idProducto);
-			return ResponseEntity.ok(optProducto.get());
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	@DeleteMapping("/eliminar/{id}")
+	public void eliminar(@PathVariable("id") int id) {
+		service.eliminarProducto(id);
+		
 	}
 	
-	@GetMapping("/obtenerProductoPorId/{idProducto}")
+	@GetMapping("/obtenerProducto/{idProducto}")
 	public Producto obtenerProductoPorId(@PathVariable("idProducto") int id) {
 		return service.obtenerProductoPorId(id);
 	}

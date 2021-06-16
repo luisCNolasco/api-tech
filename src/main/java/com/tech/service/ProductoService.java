@@ -12,5 +12,5 @@ public interface ProductoService {
 	public Optional<Producto> obtenerProducto(int id);
 	public Producto obtenerProductoPorId(int id);
 	public List<Producto> listarProductos(int idCategoria);
-	public void eliminarProductos(int id);
+	public void eliminarProducto(int id);
 }
