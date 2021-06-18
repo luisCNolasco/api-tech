@@ -38,11 +38,9 @@ public class Producto {
 	@JoinColumn(name="idProveedor")
 	private Proveedor proveedor;
 	
-	@Column(name = "fotoProducto1")
-	private String fotoProducto1;
+	@Column(name = "fotoProducto")
+	private String fotoProducto;
 	
-	@Column(name = "fotoProducto2")
-	private String fotoProducto2;
 	
 	@Column(name = "descripcionProducto")
 	private String descripcionProducto;
@@ -105,21 +103,15 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
-	public String getFotoProducto1() {
-		return fotoProducto1;
+	public String getFotoProducto() {
+		return fotoProducto;
 	}
 
-	public void setFotoProducto1(String fotoProducto1) {
-		this.fotoProducto1 = fotoProducto1;
+	public void setFotoProducto1(String fotoProducto) {
+		this.fotoProducto = fotoProducto;
 	}
 
-	public String getFotoProducto2() {
-		return fotoProducto2;
-	}
 
-	public void setFotoProducto2(String fotoProducto2) {
-		this.fotoProducto2 = fotoProducto2;
-	}
 
 	public String getDescripcionProducto() {
 		return descripcionProducto;
