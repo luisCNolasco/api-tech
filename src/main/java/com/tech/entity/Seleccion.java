@@ -2,7 +2,7 @@ package com.tech.entity;
 
 public class Seleccion {
 
-	private int idProducto;
+	private int codigo;
 	private String nombre;
 	private double precio;
 	private int cantidad;
@@ -13,16 +13,13 @@ public class Seleccion {
 		return totalParcial;
 	}
 
-	
-	public int getIdProducto() {
-		return idProducto;
+	public int getCodigo() {
+		return codigo;
 	}
 
-
-	public void setIdProducto(int idProducto) {
-		this.idProducto = idProducto;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-
 
 	public String getNombre() {
 		return nombre;

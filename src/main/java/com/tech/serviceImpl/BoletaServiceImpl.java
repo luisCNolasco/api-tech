@@ -1,4 +1,4 @@
-package com.tech.serviceImpl; 
+package com.tech.serviceImpl;
 
 import java.util.List;
 
@@ -11,17 +11,15 @@ import com.tech.repository.*;
 import com.tech.service.BoletaService;
 
 @Service
-public class BoletaServiceImpl implements BoletaService{
+public class BoletaServiceImpl implements BoletaService {
 
 	@Autowired
 	private BoletaRepository boletaRepository;
-	
+
 	@Autowired
 	private ProductoHasBoletaRepository detalleRepository;
-	
 
-	
-    @Override
+	@Override
 	@Transactional
 	public Boleta insertaBoleta(Boleta obj) {
 		Boleta cabecera = boletaRepository.save(obj);
@@ -32,12 +30,12 @@ public class BoletaServiceImpl implements BoletaService{
 		}
 		return cabecera;
 	}
-    
+
 	@Override
 	public List<Boleta> buscarPorIdUsuario(int cod_usu) {
 		return boletaRepository.buscarPorIdUsuario(cod_usu);
 	}
-	
+
 	@Override
 	public List<Boleta> listaPedido() {
 		return boletaRepository.findAll();
