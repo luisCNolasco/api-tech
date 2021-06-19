@@ -37,12 +37,12 @@ public class BoletaServiceImpl implements BoletaService {
 	}
 
 	@Override
-	public List<Boleta> listaPedido() {
+	public List<Boleta> listaBoletas() {
 		return boletaRepository.findAll();
 	}
 
 	@Override
-	public int actualizarEstadoPedido(Integer estado, Integer num_boleta) {
+	public int actualizarEstadoBoleta(Integer estado, Integer num_boleta) {
 		return boletaRepository.actualizarEstadoPedido(estado, num_boleta);
 	}
 

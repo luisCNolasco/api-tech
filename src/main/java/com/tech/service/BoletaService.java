@@ -8,7 +8,7 @@ public interface BoletaService {
 	
 	public List<Boleta> buscarPorIdUsuario(int idUsuario);
 	public Boleta insertaBoleta(Boleta obj);
-	public List<Boleta> listaPedido();
-	public int actualizarEstadoPedido(Integer estado,Integer numeroBoleta);
+	public List<Boleta> listaBoletas();
+	public int actualizarEstadoBoleta(Integer estado,Integer numeroBoleta);
 
 }

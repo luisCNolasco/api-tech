@@ -5,11 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -75,16 +73,16 @@ System.out.println("linea 85");
 		return boletaService.buscarPorIdUsuario(codigoUsuario);
 	}
 
-	@GetMapping("/listarBoletas")
+	@GetMapping("/listar")
 	@ResponseBody
 	public List<Boleta> listarBoletas() {
-		return boletaService.listaPedido();
+		return boletaService.listaBoletas();
 	}
 
 	@PostMapping("/actualizar/{estado}/{numeroBoleta}")
 	@ResponseBody
 	public int actualizarEstadoPedido(@PathVariable("estado") int estado, @PathVariable("estado") int numeroBoleta) {
-		return boletaService.actualizarEstadoPedido(estado, numeroBoleta);
+		return boletaService.actualizarEstadoBoleta(estado, numeroBoleta);
 	}
 
 }

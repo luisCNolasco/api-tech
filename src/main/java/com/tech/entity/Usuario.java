@@ -40,6 +40,29 @@ public class Usuario {
 	@ManyToOne
 	@JoinColumn(name="idDistrito")
 	private Distrito distrito;
+	
+	@Column(name = "estadoUsuario")
+	private int estadoUsuario;
+
+	@Column(name = "usuario")
+	private String usuario;
+	
+	
+	public int getEstadoUsuario() {
+		return estadoUsuario;
+	}
+
+	public void setEstadoUsuario(int estadoUsuario) {
+		this.estadoUsuario = estadoUsuario;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
 	public int getIdUsuario() {
 		return idUsuario;

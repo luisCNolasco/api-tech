@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,11 +24,11 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService service;
 	
-	/*@GetMapping("/iniciarSesion/{correo}/{password}")
-	public Usuario obtenerUsuario(@PathVariable("correo") String correo,@PathVariable("password") String password) {
+	@GetMapping("/iniciarSesion/{usuario}/{password}")
+	public Usuario obtenerUsuario(@PathVariable("usuario") String usuario,@PathVariable("password") String password) {
 			
-		return service.iniciarSesion(correo, password);
-	}*/
+		return service.iniciarSesion(usuario, password);
+	}
 	
 	@GetMapping("/listar")
 	public List<Usuario> listarUsuarios() {
@@ -38,4 +39,5 @@ public class UsuarioController {
 	public Usuario registrarUsuario(Usuario usuario) {
 		return service.registrarUsuario(usuario);
 	}
+	
 }

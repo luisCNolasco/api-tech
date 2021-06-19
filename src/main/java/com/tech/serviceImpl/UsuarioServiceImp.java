@@ -26,4 +26,9 @@ public class UsuarioServiceImp implements UsuarioService{
 		return repository.save(usuario);
 	}
 
+	@Override
+	public Usuario iniciarSesion(String usuario, String password) {
+		return repository.iniciarSesion(usuario, password);
+	}
+
 }
