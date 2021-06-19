@@ -27,13 +27,16 @@ public class BoletaController {
 	private BoletaService boletaService;
 
 	@Autowired
+	UsuarioController usuarioSesion;
+
+	@Autowired
 	SeleccionController arraySeleccion;
 
 	@GetMapping("registrar")
 	public int registrarBoleta() {
 
 		int estadoBoleta = 1;
-		int salida=-1;
+		int salida = -1;
 
 		List<ProductoHasBoleta> detalles = new ArrayList<ProductoHasBoleta>();
 		for (Seleccion x : arraySeleccion.seleccionados) {
@@ -52,15 +55,15 @@ public class BoletaController {
 		}
 
 		Boleta objBoleta = new Boleta();
-		objBoleta.setIdUsuario(2);
+		objBoleta.setIdUsuario(usuarioSesion.usuario.getIdUsuario());
 		objBoleta.setEstado(estadoBoleta);
 		objBoleta.setDetallesBoleta(detalles);
-System.out.println("linea 83");
+		System.out.println("linea 83");
 		Boleta objIns = boletaService.insertaBoleta(objBoleta);
-System.out.println("linea 85");
+		System.out.println("linea 85");
 		if (objIns != null) {
 			System.out.println("línea 87 llegó");
-			salida=1;
+			salida = 1;
 			arraySeleccion.seleccionados.clear();
 		}
 		return salida;

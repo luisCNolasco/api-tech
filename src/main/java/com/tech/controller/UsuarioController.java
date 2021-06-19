@@ -20,14 +20,15 @@ import com.tech.service.UsuarioService;
 @RequestMapping("usuario")
 public class UsuarioController {
 
+	public Usuario usuario;
 	
 	@Autowired
 	UsuarioService service;
 	
 	@GetMapping("/iniciarSesion/{usuario}/{password}")
 	public Usuario obtenerUsuario(@PathVariable("usuario") String usuario,@PathVariable("password") String password) {
-			
-		return service.iniciarSesion(usuario, password);
+		this.usuario = service.iniciarSesion(usuario, password);
+		return this.usuario;
 	}
 	
 	@GetMapping("/listar")
@@ -39,5 +40,21 @@ public class UsuarioController {
 	public Usuario registrarUsuario(Usuario usuario) {
 		return service.registrarUsuario(usuario);
 	}
+	
+	@GetMapping("/usuarioSesion")
+	public Usuario usuarioSesion() {
+		return this.usuario;
+	}
+	
+	@PostMapping("/cerrarSesion")
+	public int cerrarSesion() {
+		this.usuario=null;
+		return 1;
+	}
+
+	
+	
+	
+	
 	
 }
