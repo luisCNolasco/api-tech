@@ -20,7 +20,7 @@ import com.tech.entity.Seleccion;
 @RequestMapping("seleccion")
 public class SeleccionController {
 	
-	List<Seleccion> seleccionados = new ArrayList<Seleccion>();
+	static List<Seleccion> seleccionados = new ArrayList<Seleccion>();
 
 	@PostMapping("/agregarSeleccion")
 	public int registra(@RequestBody Seleccion seleccion) {

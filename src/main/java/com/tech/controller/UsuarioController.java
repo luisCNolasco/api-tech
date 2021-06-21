@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tech.entity.Usuario;
 import com.tech.service.UsuarioService;
 
-
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})
 @RequestMapping("usuario")
@@ -31,6 +30,7 @@ public class UsuarioController {
 		return this.usuario;
 	}
 	
+	
 	@GetMapping("/listar")
 	public List<Usuario> listarUsuarios() {
 		return service.listarUsuarios();
@@ -46,9 +46,11 @@ public class UsuarioController {
 		return this.usuario;
 	}
 	
-	@PostMapping("/cerrarSesion")
+	@GetMapping("/cerrarSesion")
 	public int cerrarSesion() {
+		
 		this.usuario=null;
+		SeleccionController.seleccionados.clear();	
 		return 1;
 	}
 
