@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tech.entity.*;
+import com.tech.entity.ProductoHasBoleta;
 import com.tech.repository.*;
 import com.tech.service.BoletaService;
 
@@ -44,6 +45,11 @@ public class BoletaServiceImpl implements BoletaService {
 	@Override
 	public int actualizarEstadoBoleta(Integer estado, Integer num_boleta) {
 		return boletaRepository.actualizarEstadoPedido(estado, num_boleta);
+	}
+
+	@Override
+	public List<ProductoHasBoleta> detallesBoleta(int numeroBoleta) {
+		return detalleRepository.detalleBoleta(numeroBoleta);
 	}
 
 }

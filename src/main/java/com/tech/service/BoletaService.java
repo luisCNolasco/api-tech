@@ -10,5 +10,6 @@ public interface BoletaService {
 	public Boleta insertaBoleta(Boleta obj);
 	public List<Boleta> listaBoletas();
 	public int actualizarEstadoBoleta(Integer estado,Integer numeroBoleta);
+	public List<ProductoHasBoleta>detallesBoleta(int idPedido);
 
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -82,10 +83,15 @@ public class BoletaController {
 		return boletaService.listaBoletas();
 	}
 
-	@PostMapping("/actualizar/{estado}/{numeroBoleta}")
+	@GetMapping("/actualizar/{estado}/{numeroBoleta}")
 	@ResponseBody
-	public int actualizarEstadoPedido(@PathVariable("estado") int estado, @PathVariable("estado") int numeroBoleta) {
+	public int actualizarEstadoPedido(@PathVariable("estado") int estado, @PathVariable("numeroBoleta") int numeroBoleta) {
 		return boletaService.actualizarEstadoBoleta(estado, numeroBoleta);
+	}
+	
+	@GetMapping("/detalleBoleta/{numeroBoleta}")
+	public List<ProductoHasBoleta> detallesBoleta(@PathVariable("numeroBoleta")int numeroBoleta) {
+		return boletaService.detallesBoleta(numeroBoleta);
 	}
 
 }
